@@ -23,22 +23,39 @@ describe("Recipes", function(){
       return closeServer();
     });
 
-    it("should list all recipes on GET request", function() {
+    it("should list all recipes on GET request on /recipes endpoint", function() {
       return chai
-        .get('/recipes')
+      .request(app)  
+      .get('/recipes')
         .then(function(res){
           expect(res).to.have.status(200);
           expect(res).to.be.json;
           expect(res.body).to.be.a('array');
 
           expect(res.body.length).to.be.at.least(1);
-          const expectedKey = ['name', 'ingredients'];
+          const expectedKeys = ['name', 'ingredients'];
           res.body.forEach(function(item) {
             expect(item).to.be.a('object');
             expect(item).to.include.keys(expectedKeys);
           });
         });
     }); 
+
+    it("should add a recipe on POST request on /recipes endpoint", function(){
+      const newRecipe = {name: 'bread', ingredients: ['water','flour','yeast']};
+      return chai
+        .request(app)
+        .post('/recipes')
+        .send(newRecipe)
+        .then(function(res){
+          expect(res).to.have.status(201);
+          expect(res).to.be.json;
+          expect(res.body).to.be.a('object');
+          expect(res.body).to.include.keys('id','name', 'ingredients');
+          expect(res.body.id).to.not.equal(null);
+          expect(res.body).to.deep.equal(Object.assign(newRecipe, {id: res.body.id}));
+        });
+    });
 });
 
 describe("Shopping List", function() {
