@@ -13,6 +13,34 @@ const expect = chai.expect;
 // see: https://github.com/chaijs/chai-http
 chai.use(chaiHttp);
 
+describe("Recipes", function(){
+  //activate server  
+  before(function () {
+      return runServer();
+    });
+
+    after(function() {
+      return closeServer();
+    });
+
+    it("should list all recipes on GET request", function() {
+      return chai
+        .get('/recipes')
+        .then(function(res){
+          expect(res).to.have.status(200);
+          expect(res).to.be.json;
+          expect(res.body).to.be.a('array');
+
+          expect(res.body.length).to.be.at.least(1);
+          const expectedKey = ['name', 'ingredients'];
+          res.body.forEach(function(item) {
+            expect(item).to.be.a('object');
+            expect(item).to.include.keys(expectedKeys);
+          });
+        });
+    }); 
+});
+
 describe("Shopping List", function() {
   // Before our tests run, we activate the server. Our `runServer`
   // function returns a promise, and we return the that promise by
