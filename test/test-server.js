@@ -81,15 +81,13 @@ describe("Recipes", function(){
       .request(app)
       .get('/recipes')
       .then(function(res){
-        updatedRecipe.id = res.body[0].id;
         return chai.request(app)
-        .delete(`/recipes/${updatedRecipe.id}`)
-        .send(updatedRecipe)
+        .delete(`/recipes/${res.body[0].id}`)
       })
-      .then(function(){
+      .then(function(res){
         expect(res).to.have.status(204)
-      })
-  })
+      });
+  });
 });
 
 
