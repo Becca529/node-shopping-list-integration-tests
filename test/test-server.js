@@ -23,7 +23,7 @@ describe("Recipes", function(){
       return closeServer();
     });
 
-    it("should list all recipes on GET request on /recipes endpoint", function() {
+    it("should list all recipes on GET request - /recipes endpoint", function() {
       return chai
       .request(app)  
       .get('/recipes')
@@ -41,7 +41,7 @@ describe("Recipes", function(){
         });
     }); 
 
-    it("should add a recipe on POST request on /recipes endpoint", function(){
+    it("should add a recipe on POST request - /recipes endpoint", function(){
       const newRecipe = {name: 'bread', ingredients: ['water','flour','yeast']};
       return chai
         .request(app)
@@ -56,7 +56,43 @@ describe("Recipes", function(){
           expect(res.body).to.deep.equal(Object.assign(newRecipe, {id: res.body.id}));
         });
     });
+
+  it("should update a recipe on PUT request -/recipes/id endpoint", function() {
+    const updatedRecipe = {name: 'breadv2', ingredients: ['water','flour','yeast', 'sugar']};
+    return chai
+      .request(app)
+      .get('/recipes')
+      .then(function(res){
+        updatedRecipe.id = res.body[0].id;
+        return chai.request(app)
+        .put(`/recipes/${updatedRecipe.id}`)
+        .send(updatedRecipe)
+      })
+      .then(function(res){
+        expect(res).to.have.status(200);
+        expect(res).to.be.json;
+        expect(res.body).to.be.a("object");
+        expect(res.body).to.deep.equal(updatedRecipe);
+      });
+  });
+
+  it("should delete a recipe on DELETE request - /recipes/id endpoint", function(){
+    return chai
+      .request(app)
+      .get('/recipes')
+      .then(function(res){
+        updatedRecipe.id = res.body[0].id;
+        return chai.request(app)
+        .delete(`/recipes/${updatedRecipe.id}`)
+        .send(updatedRecipe)
+      })
+      .then(function(){
+        expect(res).to.have.status(204)
+      })
+  })
 });
+
+
 
 describe("Shopping List", function() {
   // Before our tests run, we activate the server. Our `runServer`
