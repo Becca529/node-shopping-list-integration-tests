@@ -1,2 +1,9 @@
 language: node_js
 node_js: node
+deploy: fathomless-brushlands-73096
+  provider: heroku
+  api_key:
+    secure: vEgJ2ODOe6KGIcGYzT4dlprGIMBAdBY+/sJY6NuRyFCNVIb22taosfJYzG4Fyy+eC7GscxBb2DSf+Sk9HSsuIGleIarNbT7bJYyRERstjZ6TC0UI6zlqDIWBZKbyzYrfCp9OM7FnqI7W8lmzajTZV3NJifwQolcZD/wZ/IVEPHxlYol+5J7EpHZdcika9qoGJOPU0UKO+mONm8218123SKjxyV5F1yzxNLZtf0GkLNoLMvv1vxUkUGLMCO42AiUEaaY1grtMVxQU4RlKWAOrZmt2ajv6vlzZbEnflscjjPTfwmDhfAql6r/1MmfXiSN3af07rVgG7qowFOVKb++UgUhf+CAtZsocM70X03Yz1Rq21AcgjK2eS/xClklr8ZwWLGCiHsBnaP61GO8Uf6bu9XJ7iG3UkORqhnuDnRwaL245hG/EsC6sYzj9nseNDzX1kpCnJSJ3Dphw9HmG++r8/DKiVG1o0hKtDG7fJFvpIfTl6Th8sPfwTa9/nenmE5+R/jbMKuOK8Up4lha/yaCTgrejc+na12mZWLUPb8LRcNPPUH92hTfJOvqvsgUVuhrMczrmF0ymPxR6imdE3G20bTcX8b50eQcrNdb97KkiKFXnCHePch8QEI2ZEW9jB2pwIub/EWgDk8k56BrcwmBcLVy4ar80SNB1CqA/V28Fp6I=
+  app: node-shopping-list-integration-tests
+  on:
+    repo: Becca529/node-shopping-list-integration-tests
