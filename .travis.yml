@@ -1,2 +1,9 @@
 language: node_js
 node_js: node
+deploy: ⬢ serene-mesa-43472
+  provider: heroku
+  api_key:
+    secure: vYVmQx4GS1AdlkQ4zwtkMexQqa4Ew4dlNVmGRGU8XsJGcSR+A4nG84MwIkpMX0XQmrLG+CHPFTe8VUeFyddsiDp/uXItg9ZfGruqkYvRQA8eJcRvkNy2j+B+tQRWRqQVvtlvZbFZM9YkViogZAIswzD0KvepT3e+kIkaYVO/OxnqPXuRtJNASfbzSWwQARBOOXdN3dzavjzR/WGh76uXF/iB+BzYDEusy3c/Nj+q9ZHyRvXIR2fDZ1XZuGVzcEAuWVgJnPawJF/6bxa3riXtWtRx3Xdp6PpNwBdFzP2+3QPYDLHQknUX6Qu8Fuga/1u3kJGrIWXx6AYwx99fz4Hg2CBePX9eL09Dic/maV0bOuTP/EPTnTpVOtOnaiB3Sdbg4RTh4Ho+k7YWh65CI/bM4pvNKt4/oQ0iSglYWiy7nKFH60zWyI/1W7N04fGMoZ4cFOepx7rEqufbIA9V1PDuEfI2x60evLH2t2ZEneGvQ9BhxkscHxI1nYB6Egr+7Dax5uJ9GMJ2glUu5skmqGSE1OAgBbgL0TBrRw0N8/E3wFUjkYICGsUYmkUdBdct/Qtev1bpePhgRmBFewoxtZAazXaFYyuvxu+yQeG8XKvdzXSq1lRgNDZUTAs9Elh6xy74QOFyAVL6p/+R7Q4GWhGKZubEY3tkgfUlqtZFwC/ieYg=
+  app: fathomless-brushlands-73096
+  on:
+    repo: Becca529/node-shopping-list-integration-tests
